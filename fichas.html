@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo C — Gerar Fichas de Aproveitamento</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<h1>Módulo C — Gerar Fichas de Aproveitamento</h1>
+
+<p>
+    Este módulo lê o CSV intermediário gerado no Módulo B
+    (após a intervenção do coordenador) e gera uma ficha em PDF
+    para cada processo, conforme o modelo oficial.
+</p>
+
+<hr>
+
+<section id="passo1" class="bloco">
+    <h2>Passo 1 — Carregar o CSV de Aproveitamentos</h2>
+
+    <p>
+        Selecione o arquivo <code>aproveitamentos_intermediario.csv</code> (ou a versão editada pelo coordenador).
+        Espera-se que ele tenha, no mínimo, as colunas:
+    </p>
+
+    <ul>
+        <li><code>num_processo</code></li>
+        <li><code>nome_aluno</code></li>
+        <li><code>matricula</code></li>
+        <li><code>origem_codigo</code>, <code>origem_nome</code>, <code>origem_ch</code></li>
+        <li><code>destino_codigo</code>, <code>destino_nome</code>, <code>destino_ch</code></li>
+        <li><code>Natureza</code> (opcional)</li>
+        <li><code>inst_origem</code> (opcional)</li>
+    </ul>
+
+    <input type="file" id="csvAproveitamentos" accept=".csv">
+    <button id="btnCarregarAprov">Carregar CSV</button>
+
+    <div id="previewAprov" class="preview"></div>
+</section>
+
+<hr>
+
+<section id="passo2" class="bloco" style="display:none;">
+    <h2>Passo 2 — Gerar Fichas em PDF</h2>
+
+    <p>
+        Abaixo você vê o resumo de quantas linhas de aproveitamento existem para cada processo.
+        Clique em “Gerar ZIP com todas as fichas (PDF)” para baixar um único arquivo zipado.
+    </p>
+
+    <div id="tabelaProcessosFicha"></div>
+
+    <button id="btnGerarFichas">Gerar ZIP com todas as fichas (PDF)</button>
+    <button id="btnGerarDocx">Gerar ZIP com todas as fichas (DOCX)</button>
+
+</section>
+
+<!-- jsPDF (gera PDFs no navegador) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+
+<!-- JSZip (gera ZIP contendo todos os PDFs) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<!-- Biblioteca docx (gera arquivos .docx no navegador) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.umd.min.js"></script>
+
+<!-- Core (se existir) -->
+<script src="core.js"></script>
+
+<!-- Módulo C -->
+<script src="fichas.js"></script>
+
+</body>
+</html>

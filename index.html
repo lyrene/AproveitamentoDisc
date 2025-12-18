@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Aproveitamento de Estudos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+    <h1>Sistema de Aproveitamento de Estudos</h1>
+
+    <p>
+        Esta ferramenta auxilia na extração e organização dos dados necessários para
+        a análise de Aproveitamento de Estudos na universidade.  
+        O sistema é dividido em três módulos independentes, que podem ser usados juntos
+        ou separadamente.
+    </p>
+
+    <hr>
+
+    <!-- ========================================================
+         MÓDULO A
+    ======================================================== -->
+    <section class="modulo">
+        <h2>Módulo A — Importar Processos (arquivo HTML do SIPAC)</h2>
+
+        <p><b>Entrada esperada:</b> um arquivo <code>.html</code> contendo o resultado da consulta
+        de processos no SIPAC (lista com vários processos ou a página detalhada de um único processo).</p>
+
+        <p><b>O sistema irá extrair automaticamente:</b></p>
+        <ul>
+            <li>Número do processo</li>
+            <li>Nome do aluno</li>
+            <li>Origem do processo</li>
+            <li>Destino do processo</li>
+            <li>Situação do processo</li>
+        </ul>
+
+        <a class="botao" href="processos.html">Acessar Módulo A</a>
+    </section>
+
+    <hr>
+
+    <!-- ========================================================
+         MÓDULO B
+    ======================================================== -->
+    <section class="modulo">
+        <h2>Módulo B — Processar Requerimentos (PDFs dos alunos)</h2>
+
+        <p><b>Entrada esperada:</b> um conjunto de arquivos <code>.pdf</code> contendo
+        os Requerimentos de Aproveitamento de Estudos emitidos pelo SIGAA.</p>
+
+        <p>Cada PDF deve conter obrigatoriamente:</p>
+        <ul>
+            <li><b>Nome do aluno</b> + matrícula</li>
+            <li><b>Disciplinas de Origem</b> (curso(s) anterior(es))</li>
+            <li><b>Disciplinas de Destino</b> (solicitadas no requerimento)</li>
+        </ul>
+
+        <p><b>O sistema irá realizar automaticamente:</b></p>
+
+        <ul>
+            <li>Associação aluno ↔ processo usando o nome</li>
+            <li>Extração das disciplinas de origem</li>
+            <li>Extração das disciplinas de destino</li>
+            <li>Criação do CSV intermediário de aproveitamentos</li>
+        </ul>
+
+        <p>
+            <b>Observação importante:</b><br>
+            O coordenador poderá revisar e modificar as disciplinas de destino e suas correspondências após baixar o CSV.
+        </p>
+
+        <a class="botao" href="requerimentos.html">Acessar Módulo B</a>
+    </section>
+
+    <hr>
+
+    <!-- ========================================================
+         MÓDULO C
+    ======================================================== -->
+    <section class="modulo">
+        <h2>Módulo C — Gerar Fichas de Aproveitamento</h2>
+
+        <p><b>Entrada esperada:</b> o arquivo <code>CSV</code> revisado pelo coordenador,
+        contendo uma ou mais linhas para cada disciplina que o aluno deseja aproveitar.</p>
+
+        <p><b>O sistema irá gerar automaticamente:</b></p>
+        <ul>
+            <li>Ficha de Aproveitamento de Estudos (PDF) por processo</li>
+            <li>Arquivo ZIP contendo todas as fichas geradas</li>
+        </ul>
+
+        <a class="botao" href="fichas.html">Acessar Módulo C</a>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>

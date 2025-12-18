@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo B — Processar Requerimentos</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body>
+
+<h1>Módulo B — Processar Requerimentos (PDFs SIGAA)</h1>
+
+<p>
+    Este módulo extrai dados dos Requerimentos de Aproveitamento de Estudos (PDFs),
+    associa cada aluno ao seu processo no CSV do Módulo A, reconstrói as disciplinas de origem
+    e destino e gera um CSV intermediário para validação do coordenador.
+</p>
+
+<hr>
+
+<!-- PASSO 1 — CSV DOS PROCESSOS -->
+<section id="passo1" class="bloco">
+    <h2>Passo 1 — Carregar o CSV de Processos</h2>
+
+    <p>
+        Carregue o arquivo <code>processos_iniciais.csv</code> gerado pelo Módulo A.
+    </p>
+
+    <input type="file" id="csvProcessos" accept=".csv">
+    <button id="btnCarregarCSV">Carregar CSV</button>
+
+    <div id="previewCSV" class="preview"></div>
+</section>
+
+<hr>
+
+<!-- PASSO 2 — PDFs -->
+<section id="passo2" class="bloco" style="display:none;">
+    <h2>Passo 2 — Enviar PDFs dos Requerimentos</h2>
+
+    <p>Carregue aqui TODOS os PDFs dos requerimentos emitidos pelo SIGAA.</p>
+
+    <input type="file" id="pdfs" accept="application/pdf" multiple>
+    <button id="btnExtrairPDFs">Processar PDFs</button>
+
+    <div id="previewPDFs" class="preview"></div>
+</section>
+
+<hr>
+
+<!-- PASSO 3 — AMBIGUIDADES -->
+<section id="passo3" class="bloco" style="display:none;">
+    <h2>Passo 3 — Resolver Ambiguidades</h2>
+
+    <p>Se algum aluno aparecer mais de uma vez no CSV ou houver divergências, ajuste aqui.</p>
+
+    <div id="tabelaAmbiguidades"></div>
+</section>
+
+<hr>
+
+<!-- PASSO 4 — RESULTADOS E CSV FINAL -->
+<section id="passo4" class="bloco" style="display:none;">
+    <h2>Passo 4 — Visualizar e Baixar o CSV Intermediário</h2>
+
+    <p>Revise todas as disciplinas extraídas e associadas. Quando estiver tudo certo, clique em “Baixar CSV”.</p>
+
+    <div id="tabelaAproveitamentos"></div>
+
+    <button id="btnCSVFinal">Baixar CSV Intermediário</button>
+</section>
+
+<script src="pdfjs/pdf.js"></script> <!-- PDF.js -->
+<script> pdfjsLib.GlobalWorkerOptions.workerSrc = "pdfjs/pdf.worker.js"; </script>
+
+<script src="core.js"></script>
+<script src="requerimentos.js"></script>
+
+</body>
+</html>

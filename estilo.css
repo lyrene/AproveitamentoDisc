@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+.modulo {
+    margin-bottom: 40px;
+}
+
+.botao {
+    display: inline-block;
+    background: #0055aa;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.botao:hover {
+    background: #003f7d;
+}
